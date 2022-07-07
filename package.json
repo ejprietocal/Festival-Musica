@@ -1,0 +1,30 @@
+{
+  "name": "festival-musica",
+  "version": "1.0.0",
+  "description": "Proyecto con SASS y GULP",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch src/scss:build/css",
+    "dev": "gulp dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ejprietocal/Festival-Musica.git"
+  },
+  "keywords": [
+    "SASS",
+    "GULP"
+  ],
+  "author": "Eider Prieto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ejprietocal/Festival-Musica/issues"
+  },
+  "homepage": "https://github.com/ejprietocal/Festival-Musica#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-plumber": "^1.2.1",
+    "gulp-sass": "^5.1.0",
+    "sass": "^1.53.0"
+  }
+}
