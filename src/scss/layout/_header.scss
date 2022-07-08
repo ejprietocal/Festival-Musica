@@ -5,10 +5,14 @@
 .header{
     background-color: v.$verde;
     h1{
+        @include m.tablet {
+            margin: 0;
+        }
         text-align: center;
         color: v.$blanco;
     }
     .contenido-header{
+        padding: 2rem;
         @include m.tablet {
             display:flex;
             justify-content: space-between;
@@ -18,16 +22,19 @@
     }
 }
 .navegacion-principal{
+    @include m.tablet {
+        display: flex;    
+        gap: 1rem;    
+    }
     a{
         display: block;
         text-align: center;
         margin-bottom: 1rem;
+        @include m.tablet {
+            margin:0;
+        }
         color: v.$blanco;
         font-size: 2.4rem;
-        @include m.tablet {
-            display:inline;
-            
-        }
         &:hover{
             color: v.$amarillo;
         }
