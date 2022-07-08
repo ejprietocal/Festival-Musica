@@ -1,6 +1,6 @@
 const {src, dest, watch} = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
-const plumber = requiere('gulp-plumber');
+const plumber = require('gulp-plumber');
 
 function css(done){
     // identificar el archivo de SASS
