@@ -60,14 +60,14 @@ function versionAvif(done){
         quality: 50
     };
 
-    src('src/img/**/*.{png,jpg}')//ubicar el archivo sobre el que queremos trabajar
+    src('src/img/**/*.{jpg, png}')//ubicar el archivo sobre el que queremos trabajar
         .pipe(avif(opciones))//ejecutar la funcion webp sobre el archivo, la funcion recibe un objeto que lee para fijar los parametros de ejecucion
         .pipe(dest('build/img'))//guardar en memoria en la carpeta de preferencia
     
     done();
 }
 exports.imagenes = imagenes;
-exports.versionAvif = versionAvif;
 exports.css = css;
 exports.versionWbp = versionWbp;
-exports.dev = parallel(imagenes,versionWbp,avif,dev);
+exports.versionAvif = versionAvif;
+exports.dev = parallel(imagenes,versionWbp,versionAvif,dev);
