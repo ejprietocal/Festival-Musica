@@ -25,8 +25,15 @@ function css(done){
 
     done();
 }
+function javascript(done){
+    src('src/js/**/*.js')
+        .pipe(dest('build/js'));
+
+    done();
+}
 function dev(done){
     watch('src/scss/**/*.scss',css);
+    watch('src/js/**/*.js',javascript);
     done();
 }
 
@@ -67,7 +74,8 @@ function versionAvif(done){
     done();
 }
 exports.imagenes = imagenes;
+exports.js = javascript;
 exports.css = css;
 exports.versionWbp = versionWbp;
 exports.versionAvif = versionAvif;
-exports.dev = parallel(imagenes,versionWbp,versionAvif,dev);
+exports.dev = parallel(imagenes,versionWbp,versionAvif,javascript,dev);
