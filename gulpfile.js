@@ -2,7 +2,11 @@ const {src, dest, watch, parallel} = require('gulp');
 
 //CSS
 const sass = require('gulp-sass')(require('sass'));
-const plumber = require('gulp-plumber');
+const plumber = require('gulp-plumber');//encapsula errores de codigo para no detener el flujo del watch
+const autoprefixer = require('autoprefixer');//adapta a navegadores que no tengan mucho soporte
+const cssnano = require('cssnano'); //comprime el archivo css
+const postcss = require('gulp-postcss'); //enlaca las transformaciones 
+const sourcemaps = require('gulp-sourcemaps'); //realiza un mapeo y nos da la ubicacion de los eleemtnos en lso archovs
 
 
 //IMAGENES
@@ -11,14 +15,21 @@ const plumber = require('gulp-plumber');
     const webp = require('gulp-webp');
     const avif = require('gulp-avif');
 
+//javascript
+
+    const terser = require('gulp-terser-js');
+
 function css(done){
     // identificar el archivo de SASS
     //Compilarlo
     //Almacenarla en el Discoduro
 
     src('src/scss/**/*.scss')
+        .pipe(sourcemaps.init())
         .pipe(plumber())//evita errores y detencion del workflow
         .pipe(sass())  //compilarlo
+        .pipe(postcss([autoprefixer(),cssnano()]))
+        .pipe(sourcemaps.write('.'))
         .pipe(dest('build/css'));//almacenarla en el disco duro
 
 
@@ -27,6 +38,9 @@ function css(done){
 }
 function javascript(done){
     src('src/js/**/*.js')
+        .pipe(sourcemaps.init())
+        .pipe(terser())
+        .pipe(sourcemaps.write())
         .pipe(dest('build/js'));
 
     done();
